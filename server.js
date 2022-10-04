@@ -3,8 +3,12 @@ const app = express()
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const cors = require('cors');
- 
 app.use(cors())
+var corsOptions = {
+	origin: 'https://white-stripe.vercel.app',
+	optionsSuccessStatus: 200
+  }
+ 
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -23,11 +27,11 @@ var transporter = nodemailer.createTransport(smtpTransport({
 	}
 }));
 
-app.get('/', (req, res) => {
+app.get('/',  cors(corsOptions), (req, res) => {
 	res.send('hello world')
 })
 
-app.post('/self-contact', (req, res) => {
+app.post('/self-contact',  cors(corsOptions), (req, res) => {
 	var mailOptions = {
 		from: process.env.SMTP_EMAIL,
 		to: process.env.SMTP_EMAIL,
@@ -43,7 +47,7 @@ app.post('/self-contact', (req, res) => {
 	});
 })
 
-app.post('/self-appointment', (req, res) => {
+app.post('/self-appointment',  cors(corsOptions), (req, res) => {
 	var mailOptions = {
 		from: process.env.SMTP_EMAIL,
 		to: process.env.SMTP_EMAIL,
@@ -59,7 +63,7 @@ app.post('/self-appointment', (req, res) => {
 	});
 })
 
-app.post('/user-contact', (req, res) => {
+app.post('/user-contact',  cors(corsOptions), (req, res) => {
 	var mailOptions = {
 		from: process.env.SMTP_EMAIL,
 		to: req.body.email,
