@@ -1,10 +1,10 @@
 {
   "name": "white-stripe-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
