@@ -5,7 +5,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const cors = require('cors');
 app.use(cors({
-	origin: ['https://white-stripe.vercel.app', 'https://whitestripes-tailoring.com'],
+	origin: 'https://whitestripes-tailoring.com',
 }))
 
 app.use(bodyParser.urlencoded({ extended: false }))
